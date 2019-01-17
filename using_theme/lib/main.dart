@@ -58,7 +58,7 @@ class MyHomePage extends StatelessWidget {
             'hello world!',
             style: TextStyle(
               color: Colors.black54,
-              fontSize: 24
+              fontSize: 24,
             ),
           ),
         ),
