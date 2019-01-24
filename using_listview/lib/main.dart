@@ -72,7 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
               'https://github.com/nisrulz/flutter-examples/raw/develop/image_from_network/img/flutter_logo.png',
             ),
             Image.network(
-                'https://github.com/nisrulz/flutter-examples/raw/develop/image_from_network/img/loop_anim.gif')
+                'https://github.com/nisrulz/flutter-examples/raw/develop/image_from_network/img/loop_anim.gif'),
+            CircleAvatar()
           ],
         ),
       ),
