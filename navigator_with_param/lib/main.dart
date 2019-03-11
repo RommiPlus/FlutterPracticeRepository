@@ -21,7 +21,11 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => MyHomePage(title: 'Flutter Demo Home Page'),
+        '/secondPage' : (context) => SecondPage.create();
+      },
     );
   }
 }
@@ -101,8 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void action2NextPage() async {
-    String text = await Navigator.push(this.context,
-        MaterialPageRoute(builder: (context) => SecondPage('可爱的小丸子')));
+    String text = await Navigator.pushNamed(this.context, '/secondPage');
 
     setState(() {
       name = text;

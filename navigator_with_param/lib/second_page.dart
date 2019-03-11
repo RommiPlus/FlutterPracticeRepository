@@ -5,8 +5,9 @@ import 'package:flutter/widgets.dart';
 class SecondPage extends StatefulWidget {
   final String name;
 
-
   SecondPage(this.name);
+
+  SecondPage.create() : name = 'data';
 
   @override
   State<StatefulWidget> createState() {
