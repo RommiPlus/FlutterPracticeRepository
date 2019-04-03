@@ -56,7 +56,7 @@ class DemoLocalizationsDelegate
 
   /// 当前语言是否支持
   @override
-  bool isSupported(Locale locale) => ['en', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => ['zh', 'en'].contains(locale.languageCode);
 
   /// 根据系统语言初始化本地类
   @override
@@ -99,8 +99,8 @@ class Demo extends StatelessWidget {
       ],
       supportedLocales: [
         // 支持的语言，英文，其次是西班牙语
-        const Locale('en', ''),
         const Locale('zh', ''),
+        const Locale('en', ''),
       ],
       // Watch out: MaterialApp creates a Localizations widget
       // with the specified delegates. DemoLocalizations.of()
