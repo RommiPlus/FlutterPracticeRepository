@@ -107,6 +107,17 @@ class _MyHomePageState extends State<MyHomePage> {
     _jpush.applyPushAuthority(
         new NotificationSettingsIOS(sound: true, alert: true, badge: true));
 
+    _jpush.getLaunchAppNotification().then((map) {
+      print(map);
+      if (mounted) {
+        print('gogogog $mounted');
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => DetailPage()));
+      } else {
+        print('gogogog $mounted');
+      }
+    });
+
     _jpush.getRegistrationID().then((rid) {
       print('registration id: $rid');
     });
