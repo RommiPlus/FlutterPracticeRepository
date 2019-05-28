@@ -230,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     _counter++;
     final random = new Random();
-    seriesList[0].data.add(LinearSales(_counter, random.nextInt(100)));
+    seriesList[0].data.add(LinearSales(_counter, random.nextDouble()));
 
     setState(() {});
   }
@@ -240,7 +240,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // 初始化一些数据
     seriesList = _createRandomData();
     render = CustomCircleSymbolRenderer(selectedText);
-    for (var i = 0; i < 50; i++) {
+    for (var i = 0; i < 144; i++) {
       staticTicks.add(charts.TickSpec(i, label: 'ha$i'));
     }
     super.initState();
@@ -253,6 +253,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(selectedText),
       ),
       body: Container(
+        height: 200,
         // 线性表
         child: charts.LineChart(
           seriesList,
@@ -272,6 +273,18 @@ class _MyHomePageState extends State<MyHomePage> {
               changedListener: _onSelectionChanged,
             )
           ],
+          primaryMeasureAxis: new charts.NumericAxisSpec(
+              // tickProviderSpec:charts.StaticNumericTickProviderSpec(staticTicks),
+              // renderSpec: new charts.SmallTickRendererSpec(
+              // desiredTickCount:5,
+              renderSpec: new charts.SmallTickRendererSpec(
+                  // Tick and Label styling here.
+                  ),
+              tickProviderSpec: new charts.BasicNumericTickProviderSpec(
+                  desiredMinTickCount: 5,
+                  desiredMaxTickCount: 5,
+                  zeroBound: false,
+                  dataIsInWholeNumbers: false)),
           domainAxis: new charts.NumericAxisSpec(
               // 初始显示的范围
               viewport: new charts.NumericExtents(2, 8),
@@ -292,8 +305,17 @@ class _MyHomePageState extends State<MyHomePage> {
   static List<charts.Series<LinearSales, num>> _createRandomData() {
     final random = new Random();
     final data = <LinearSales>[];
-    for (var i = 0; i < 50; i++) {
-      data.add(new LinearSales(i, random.nextInt(100)));
+    var initNum = 20;
+    for (var i = 0; i < 12; i++) {
+      for (var j = 0; j < 12; j++) {
+        data.add(new LinearSales(i * 12 + j, initNum + random.nextDouble()));
+      }
+
+      if (i < 6) {
+        initNum++;
+      } else {
+        initNum--;
+      }
     }
 
     return [
@@ -325,7 +347,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class LinearSales {
   final int year;
-  final int sales;
+  final double sales;
 
   LinearSales(this.year, this.sales);
 }
