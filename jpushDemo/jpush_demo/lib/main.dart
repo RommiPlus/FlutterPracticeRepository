@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jpush_demo/detail.dart';
 import 'package:jpush_flutter/jpush_flutter.dart';
+import 'package:event_bus/event_bus.dart';
+
+EventBus eventBus = EventBus();
 
 void main() {
   runApp(MyApp());
 }
+
+class OnNotificationReceiveEvent {}
 
 class MyApp extends StatefulWidget {
   @override
@@ -69,6 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // 接收通知回调方法。
       onReceiveNotification: (Map<String, dynamic> message) async {
         print("flutter onReceiveNotification: $message");
+        eventBus.fire(OnNotificationReceiveEvent());
       },
 
       // 点击通知回调方法。
