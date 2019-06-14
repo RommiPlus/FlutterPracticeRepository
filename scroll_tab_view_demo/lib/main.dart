@@ -44,6 +44,28 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<Widget> _tabs = List();
+  List<Widget> _content = List();
+  final directionsCar = [
+    Tab(text: 'This is a text'),
+    Tab(icon: Icon(Icons.directions_bike)),
+    Tab(icon: Icon(Icons.directions_railway)),
+    Tab(icon: Icon(Icons.directions_car)),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    List<Widget> tempTabs = List();
+    tempTabs.addAll(directionsCar);
+
+    List<Widget> tempContent = List();
+    tempContent.addAll(buildTabView());
+
+    _tabs = tempTabs;
+    _content = tempContent;
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -51,33 +73,44 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Scaffold(
           appBar: AppBar(
             bottom: TabBar(
-              tabs: [
-                Tab(text: 'This is a text'),
-                Tab(icon: Icon(Icons.directions_bike)),
-                Tab(icon: Icon(Icons.directions_railway)),
-                Tab(icon: Icon(Icons.directions_car)),
-//                Tab(icon: Icon(Icons.directions_bike)),
-//                Tab(icon: Icon(Icons.directions_railway)),
-//                Tab(icon: Icon(Icons.directions_railway)),
-//                Tab(icon: Icon(Icons.directions_car)),
-//                Tab(icon: Icon(Icons.directions_bike)),
-//                Tab(icon: Icon(Icons.directions_railway)),
-              ],
+              key: PageStorageKey(5),
+              tabs: _tabs,
               isScrollable: true,
             ),
           ),
-          body: TabBarView(children: [
-            Icon(Icons.directions_car),
-            Icon(Icons.directions_bike),
-            Icon(Icons.directions_railway),
-            Icon(Icons.directions_car),
-//            Icon(Icons.directions_bike),
-//            Icon(Icons.directions_railway),
-//            Icon(Icons.directions_railway),
-//            Icon(Icons.directions_car),
-//            Icon(Icons.directions_bike),
-//            Icon(Icons.directions_railway),
-          ]),
+          body: TabBarView(children: _content),
+          floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                List<Widget> tempTabs = List();
+                tempTabs.addAll(directionsCar);
+
+                List<Widget> tempContent = List();
+                tempContent.addAll(buildTabView());
+                setState(() {
+                  _tabs = tempTabs;
+                  _content = tempContent;
+                });
+              },
+              child: Icon(Icons.add)),
         ));
+  }
+
+  List<Widget> buildTabView() {
+    final view = [
+      buildListView(1),
+      buildListView(2),
+      buildListView(3),
+      buildListView(4),
+    ];
+    return view;
+  }
+
+  ListView buildListView(int i) {
+    return ListView.builder(
+        key: PageStorageKey(i),
+        itemBuilder: (context, index) {
+          return Text('item: $index', style: TextStyle(fontSize: 16));
+        },
+        itemCount: 100);
   }
 }
