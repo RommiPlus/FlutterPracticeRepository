@@ -150,8 +150,7 @@ class ToggleButton extends StatelessWidget {
           color: getBgColor(),
           disabledColor: getBgColor(),
           child: Text(text, style: TextStyle(color: getTextColor())),
-          onPressed: status == SelectStatus.checked ? null : callback,
-          padding: EdgeInsets.all(0)),
+          onPressed: status == SelectStatus.checked ? null : callback),
     );
   }
 
