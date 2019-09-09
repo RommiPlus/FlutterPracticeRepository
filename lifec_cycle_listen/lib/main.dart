@@ -61,19 +61,19 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
       case AppLifecycleState.resumed:
         print('app resumed');
         print('homepage is ${ModalRoute.of(context).isCurrent}');
-        // 如果当前页面用户可操作性
+        // 如果当前页面用户可操作，重新请求加载页面
         break;
 
       case AppLifecycleState.paused:
         // 当前页面用户不可见
-        // android上用这个
+        // android上用这个，不可见时停止定时器任务
         print('app paused');
         print('homepage is ${ModalRoute.of(context).isCurrent}');
         break;
 
       case AppLifecycleState.inactive:
         // 如果是当前页面用户不可操作
-        // iOS上用这个
+        // iOS上用这个，不可见时停止定时器任务
         print('app inactive');
         print('homepage is ${ModalRoute.of(context).isCurrent}');
         break;
