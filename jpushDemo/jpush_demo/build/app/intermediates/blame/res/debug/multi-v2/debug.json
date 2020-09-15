@@ -1,0 +1,39 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/rommy/FlutterPracticeRepository/jpushDemo/jpush_demo/build/app/intermediates/res/merged/debug/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/rommy/.gradle/caches/transforms-1/files-1.1/jpush-3.1.6.aar/05d27aeeb3f62eb8702ee9e40aab8c54/res/values/values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "11",
+                        "endColumns": "12",
+                        "endOffsets": "618"
+                    },
+                    "to": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "352",
+                        "endLines": "16",
+                        "endColumns": "12",
+                        "endOffsets": "915"
+                    }
+                },
+                {
+                    "source": "/Users/rommy/FlutterPracticeRepository/jpushDemo/jpush_demo/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "347"
+                    }
+                }
+            ]
+        }
+    ]
+}
